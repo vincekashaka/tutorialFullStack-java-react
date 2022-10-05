@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header';
 import TutorialDashboard from './components/TutorialDashboard';
 import AddTutorials from './components/AddTutorials';
+import Tutorials from './components/Tutorials';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             path='/dashboad/addTutorial'
             element={<AddTutorials />}
           />
+          <Route path='/tutorials/:id' element={<Tutorials />} />
 
           {/* <Route exact path='/tutorials' element={<TutorialDashboard />} /> */}
         </Routes>

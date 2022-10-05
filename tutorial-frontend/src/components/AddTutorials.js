@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTutorial } from '../slices/tutorial';
+import { useNavigate } from 'react-router-dom';
 
 const AddTutorials = () => {
   const initialTutorialState = {
@@ -14,6 +15,7 @@ const AddTutorials = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -54,6 +56,7 @@ const AddTutorials = () => {
               {submitted ? (
                 <div>
                   <h4>You submitted successfully!</h4>
+
                   <button className='btn btn-success' onClick={newTutorial}>
                     Add
                   </button>
