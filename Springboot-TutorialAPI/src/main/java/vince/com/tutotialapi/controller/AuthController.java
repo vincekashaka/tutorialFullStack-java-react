@@ -21,10 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import vince.com.tutotialapi.model.ERole;
 import vince.com.tutotialapi.model.Role;
 import vince.com.tutotialapi.model.User;
 import vince.com.tutotialapi.payload.request.LoginRequest;
 import vince.com.tutotialapi.payload.request.SignupRequest;
+import vince.com.tutotialapi.payload.response.MessageResponse;
+import vince.com.tutotialapi.payload.response.UserInfoResponse;
 import vince.com.tutotialapi.repository.RoleRepository;
 import vince.com.tutotialapi.repository.UserRepository;
 import vince.com.tutotialapi.security.jwt.JwtUtils;
@@ -104,12 +108,11 @@ public class AuthController {
                         roles.add(adminRole);
 
                         break;
-                    case "mod":
-                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(modRole);
+//                    case "mod":
+//                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//                        roles.add(modRole);
 
-                        break;
                     default:
                         Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
