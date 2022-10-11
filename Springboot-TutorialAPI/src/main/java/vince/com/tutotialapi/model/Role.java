@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -21,7 +19,28 @@ public class Role {
     @Column(length = 20)
     private ERole name;
 
-//    public Role(ERole name) {
-//        this.name = name;
-//    }
+    public  Role() {
+
+    }
+
+
+    public Role(ERole name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public ERole getName() {
+        return name;
+    }
+
+    public void setName(ERole name) {
+        this.name = name;
+    }
 }

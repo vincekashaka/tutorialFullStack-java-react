@@ -4,6 +4,7 @@ package vince.com.tutotialapi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vince.com.tutotialapi.model.Tutorial;
 import vince.com.tutotialapi.repository.TutorialRepository;
@@ -21,6 +22,7 @@ public class TutorialController {
     TutorialRepository tutorialRepository;
 
     @GetMapping("/tutorials")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
         try {
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
